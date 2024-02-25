@@ -1,11 +1,20 @@
-//Функция для проверки длины строки.
+/**
+ * Функция для проверки длины строки.
+ * @param {string} string - проверямая строка.
+ * @param {integer} maxLength - максимальная длина строки.
+ * @returns {boolean} - возвращет true, если длина строки меньше или равна максимальной длины строки.
+ */
 
 const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
 console.log(checkStringLength('sdjhk', 3));
 console.log(checkStringLength('sdj', 3));
 
-//Функция для проверки, является ли строка палиндромом.
+/**
+ * Функция для проверки строки на палиндромность.
+ * @param {string} string - проверямая строка.
+ * @returns {boolean} - возвращет true, если палиндром.
+ */
 
 const checkPalindrome = (string) => {
   const modString = string.replaceAll(' ', '').toLowerCase();
@@ -16,18 +25,21 @@ const checkPalindrome = (string) => {
 
   if (modString === reverseModString) {
     console.log ('Палиндром');
-    return 'Палиндром';
+    return true;
   }
   console.log ('Не палиндром');
-  return 'Не палиндром';
+  return false;
 }
 
 checkPalindrome ('Торт');
 checkPalindrome ('Тот');
 checkPalindrome ('Лёша на полке клопа нашёл ');
 
-//Функция принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа.
-// Если в строке нет ни одной цифры, функция должна вернуть NaN
+/**
+ * Функция принимает строку и извлекает цифры превращая в целое число.
+ * @param {} string - проверямая строка.
+ * @returns {boolean} - возвращет целое число, либо NaN (в случае отсутствия цифр).
+ */
 
 
 const extractNumber = function (string) {
