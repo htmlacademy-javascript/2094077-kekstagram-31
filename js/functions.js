@@ -19,16 +19,10 @@ console.log(checkStringLength('sdj', 3));
 const checkPalindrome = (string) => {
   const modString = string.replaceAll(' ', '').toLowerCase();
   let reverseModString = '';
-  for (let i = modString.length - 1; i >= 0; i -= 1) {
+  for (let i = modString.length - 1; i >= 0; i--) {
     reverseModString += modString.at(i);
   }
-
-  if (modString === reverseModString) {
-    console.log ('Палиндром');
-    return true;
-  }
-  console.log ('Не палиндром');
-  return false;
+  return modString === reverseModString;
 }
 
 checkPalindrome ('Торт');
@@ -47,11 +41,11 @@ const extractNumber = function (string) {
   if (typeof(string) !== String) {
     string = String(string);
   }
-  for (let i = 0; i < string.length; i += 1) {
+  for (let i = 0; i < string.length; i++) {
     if (Number.isNaN(parseInt(string[i]), 10)) {
       continue;
     }
-    number = number + string[i];
+    number = `${number}${string[i]}`;;
   }
   return number ? parseInt(number, 10) : NaN;
 }
