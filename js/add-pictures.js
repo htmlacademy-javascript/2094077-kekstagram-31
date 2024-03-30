@@ -1,6 +1,7 @@
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const photoList = document.querySelector('.pictures');
 const photoFragment = document.createDocumentFragment();
+const arrayComments = [];
 
 const createElement = ({url, description, likes, comments}) => {
   const element = pictureTemplate.cloneNode(true);
@@ -8,6 +9,7 @@ const createElement = ({url, description, likes, comments}) => {
   element.querySelector('.picture__img').alt = description;
   element.querySelector('.picture__likes').textContent = likes;
   element.querySelector('.picture__comments').textContent = comments.length;
+  arrayComments.push(comments);
   return element;
 };
 
@@ -19,4 +21,4 @@ const addPhotos = (arrayPhotos) => {
   photoList.appendChild(photoFragment);
 };
 
-export {addPhotos};
+export {addPhotos, arrayComments, photoList};

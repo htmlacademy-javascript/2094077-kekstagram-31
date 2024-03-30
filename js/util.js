@@ -22,4 +22,6 @@ const createUniqueNumberFromRange = function (min, max) {
   };
 };
 
-export {getRandomInteger, createUniqueNumberFromRange};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export {getRandomInteger, createUniqueNumberFromRange, isEscapeKey};
