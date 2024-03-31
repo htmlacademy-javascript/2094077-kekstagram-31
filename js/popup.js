@@ -28,7 +28,6 @@ const fillPopup = (miniature) => {
   bigPicturePopup.querySelector('.social__caption').textContent = miniature.querySelector('.picture__img').alt;
   bigPicturePopup.querySelector('.likes-count').textContent = miniature.querySelector('.picture__likes').textContent;
   bigPicturePopup.querySelector('.social__comment-total-count').textContent = miniature.querySelector('.picture__comments').textContent;
-  bigPicturePopup.querySelector('.social__comment-shown-count').textContent = document.querySelectorAll('.social__comment:not(.hidden)').length;
 };
 
 const closePopup = () => {
@@ -38,6 +37,7 @@ const closePopup = () => {
   commentLoader.classList.remove('hidden');
   document.removeEventListener('keydown', onPopupEscKeydown);
   buttonClosePopup.removeEventListener('click', closePopup);
+  commentLoader.removeEventListener('click', loadComments);
 }
 
 const onPopupEscKeydown = (evt) => {
@@ -45,6 +45,15 @@ const onPopupEscKeydown = (evt) => {
     evt.preventDefault();
     closePopup();
   }
+};
+
+const loadComments = function (evt) {
+  evt.preventDefault();
+  const hiddenCommentItems = comments.querySelectorAll('.hidden');
+  for (let i = 0; i < 5; i++) {
+    hiddenCommentItems[i].classList.remove('hidden');
+    bigPicturePopup.querySelector('.social__comment-shown-count').textContent = document.querySelectorAll('.social__comment:not(.hidden)').length;
+  };
 };
 
 const openPopup = function (evt) {
@@ -55,10 +64,14 @@ const openPopup = function (evt) {
     fillPopup(evt.target.parentNode);
     bigPicturePopup.classList.remove('hidden');
     document.querySelector('body').classList.add('modal-open');
-    commentCount.classList.add('hidden');
-    commentLoader.classList.add('hidden');
     buttonClosePopup.addEventListener('click', closePopup);
     document.addEventListener('keydown', onPopupEscKeydown);
+    const commentItems = bigPicturePopup.querySelectorAll('.social__comment');
+    for (let i = commentItems.length - 1; i > 4; i--) {
+      commentItems[i].classList.add('hidden');
+    };
+    commentLoader.addEventListener('click', loadComments);
+    bigPicturePopup.querySelector('.social__comment-shown-count').textContent = document.querySelectorAll('.social__comment:not(.hidden)').length;
   }
 };
 
