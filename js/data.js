@@ -40,21 +40,21 @@ const urlPicture = {
 const likeCounter = {
   MIN: 15,
   MAX: 200
-}
+};
 
 const commentCounter = {
   MIN: 0,
   MAX: 30
-}
+};
 
 const commentId = {
   MIN: 1,
   MAX: 100000000
-}
+};
 
 const avatarId = {
   MIN: 1,
   MAX: 6
-}
+};
 
 export {NUMBERS_OF_OBJECTS, DESCRIPTION_PHOTO, COMMENTS, NAMES, objectId, urlPicture, likeCounter, commentCounter, commentId, avatarId};
