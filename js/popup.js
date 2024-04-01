@@ -45,6 +45,7 @@ const loadComments = function (evt) {
   let hiddenCounter = hiddenComments.length;
   for (let i = 0; i < 5; i++) {
     if (hiddenCounter === 0) {
+      commentLoader.classList.add('hidden');
       break;
     } else {
       hiddenCounter--;
