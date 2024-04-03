@@ -33,6 +33,12 @@ const REGEX = /^#[a-zа-яё0-9]{1,19}$/i;
 
 const MAX_COMMENT_LENGTH = 140;
 
+const scalingSettings = {
+  MIN: 25,
+  MAX: 100,
+  STEP: 25
+};
+
 const objectId = {
   MIN: 1,
   MAX: 25
@@ -63,4 +69,4 @@ const avatarId = {
   MAX: 6
 };
 
-export {NUMBERS_OF_OBJECTS, DESCRIPTION_PHOTO, COMMENTS, NAMES, MAX_HASHTAGS, REGEX, MAX_COMMENT_LENGTH, objectId, urlPicture, likeCounter, commentCounter, commentId, avatarId};
+export {NUMBERS_OF_OBJECTS, DESCRIPTION_PHOTO, COMMENTS, NAMES, MAX_HASHTAGS, REGEX, MAX_COMMENT_LENGTH, scalingSettings, objectId, urlPicture, likeCounter, commentCounter, commentId, avatarId};
