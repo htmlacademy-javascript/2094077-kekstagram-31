@@ -1,5 +1,6 @@
 import {isEscapeKey} from './util.js';
 import {MAX_HASHTAGS, REGEX, MAX_COMMENT_LENGTH} from './data.js';
+import {onScaleChange} from './photo-scaling.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
 const uploadImage = document.querySelector('.img-upload__input');
@@ -7,6 +8,8 @@ const overlay = document.querySelector('.img-upload__overlay');
 const overlayCloseButton = document.querySelector('.img-upload__cancel');
 const hashtagInput = document.querySelector('.text__hashtags');
 const imageDescriptionInput = document.querySelector('.text__description');
+const zoomOutPhoto = document.querySelector('.scale__control--smaller');
+const zoomPhoto = document.querySelector('.scale__control--bigger');
 
 const pristine = new Pristine(uploadForm, {
   classTo: 'img-upload__field-wrapper',
@@ -25,6 +28,8 @@ const displayUploadForm = () => {
   overlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onEscapeEvent);
+  zoomOutPhoto.addEventListener('click', onScaleChange);
+  zoomPhoto.addEventListener('click', onScaleChange);
 };
 
 function hideUploadForm() {
@@ -33,6 +38,8 @@ function hideUploadForm() {
   overlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
   document.removeEventListener('keydown', onEscapeEvent);
+  zoomOutPhoto.removeEventListener('click', onScaleChange);
+  zoomPhoto.removeEventListener('click', onScaleChange);
 };
 
 const submitForm = (evt) => {

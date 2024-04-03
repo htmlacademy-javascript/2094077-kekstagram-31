@@ -1,7 +1,5 @@
 import {scalingSettings} from './data.js';
 
-const zoomOutPhoto = document.querySelector('.scale__control--smaller');
-const zoomPhoto = document.querySelector('.scale__control--bigger');
 const scale = document.querySelector('.scale__control--value');
 const photo = document.querySelector('.img-upload__preview img');
 
@@ -18,9 +16,4 @@ const onScaleChange = (evt) => {
   };
 };
 
-const photoScaling = () => {
-  zoomOutPhoto.addEventListener('click', onScaleChange);
-  zoomPhoto.addEventListener('click', onScaleChange);
-};
-
-export {photoScaling};
+export {onScaleChange};
