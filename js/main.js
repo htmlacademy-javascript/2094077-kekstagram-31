@@ -7,5 +7,5 @@ const photosData = createPhotoDescriptions();
 addPhotos(photosData);
 photoList.addEventListener('click', (evt) => {openPopup(evt, photosData)});
 formValidation();
-photoScaling ();
+
 
