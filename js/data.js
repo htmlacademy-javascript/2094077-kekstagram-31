@@ -25,7 +25,13 @@ const NAMES = [
   'Хотомир',
   'Брячислава',
   'Веченега'
-]
+];
+
+const MAX_HASHTAGS = 5;
+
+const REGEX = /^#[a-zа-яё0-9]{1,19}$/i;
+
+const MAX_COMMENT_LENGTH = 140;
 
 const objectId = {
   MIN: 1,
@@ -57,4 +63,4 @@ const avatarId = {
   MAX: 6
 };
 
-export {NUMBERS_OF_OBJECTS, DESCRIPTION_PHOTO, COMMENTS, NAMES, objectId, urlPicture, likeCounter, commentCounter, commentId, avatarId};
+export {NUMBERS_OF_OBJECTS, DESCRIPTION_PHOTO, COMMENTS, NAMES, MAX_HASHTAGS, REGEX, MAX_COMMENT_LENGTH, objectId, urlPicture, likeCounter, commentCounter, commentId, avatarId};
