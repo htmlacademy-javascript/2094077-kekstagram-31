@@ -10,15 +10,11 @@ const onScaleChange = (evt) => {
   if (evt.target.classList.contains('scale__control--smaller') && currentValue > scalingSettings.MIN) {
     currentValue = currentValue - scalingSettings.STEP;
     scale.value = `${currentValue}%`;
-    photo.style.transform = `scale(0.${currentValue})`;
+    photo.style.transform = `scale(${0.01 * currentValue})`;
   } else if (evt.target.classList.contains('scale__control--bigger') && currentValue < scalingSettings.MAX) {
     currentValue = currentValue + scalingSettings.STEP;
     scale.value = `${currentValue}%`;
-    if (currentValue === 100) {
-      photo.style.transform = `scale(${0.01 * currentValue})`;
-    } else {
-      photo.style.transform = `scale(0.${currentValue})`;
-    };
+    photo.style.transform = `scale(${0.01 * currentValue})`;
   };
 };
 
