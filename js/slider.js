@@ -67,6 +67,7 @@ const onSelectEffect = function (evt) {
 
   if (radioValue === 'none') {
     sliderContainer.classList.add('hidden');
+    uploadedImage.removeAttribute('style');
   } else {
     ty(effects[radioValue]);
   };
