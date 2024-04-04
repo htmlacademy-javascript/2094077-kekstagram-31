@@ -40,11 +40,11 @@ const fillPopup = ({url, description, likes, comments}) => {
 
 const loadComments = function (evt) {
   evt.preventDefault();
-  console.log('клик!');
   let hiddenComments = document.querySelectorAll('.social__comment.hidden');
   let hiddenCounter = hiddenComments.length;
   for (let i = 0; i < 5; i++) {
     if (hiddenCounter === 0) {
+      commentLoader.classList.add('hidden');
       break;
     } else {
       hiddenCounter--;
