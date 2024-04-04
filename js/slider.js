@@ -6,7 +6,7 @@ const sliderContainer = document.querySelector('.img-upload__effect-level');
 const effects = {
   chrome: {filter: 'grayscale', min: 0, max: 1, start: 1, step: 0.1},
   sepia: {filter: 'sepia', min: 0, max: 1, start: 1, step: 0.1},
-  marvin: {filter: 'invert', min: 0, max: 1, start: 1, step: 0.01},
+  marvin: {filter: 'invert', min: 0, max: 100, start: 100, step: 1},
   phobos: {filter: 'blur', min: 0, max: 3, start: 3, step: 0.1},
   heat: {filter: 'brightness', min: 1, max: 3, start: 3, step: 0.1}
 };
@@ -37,7 +37,7 @@ noUiSlider.create(slider, {
   }
 });
 
-const ty = ({filter, min, max, start, step}) => {
+const addEffects = ({filter, min, max, start, step}) => {
   sliderContainer.classList.remove('hidden');
   uploadedImage.removeAttribute('style');
 
@@ -69,7 +69,7 @@ const onSelectEffect = function (evt) {
     sliderContainer.classList.add('hidden');
     uploadedImage.removeAttribute('style');
   } else {
-    ty(effects[radioValue]);
+    addEffects(effects[radioValue]);
   };
 };
 
