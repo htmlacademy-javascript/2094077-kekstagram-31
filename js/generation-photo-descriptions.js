@@ -4,7 +4,7 @@ import {NUMBERS_OF_OBJECTS, DESCRIPTION_PHOTO, COMMENTS, NAMES, objectId, urlPic
 const generateId = createUniqueNumberFromRange(objectId.MIN, objectId.MAX);
 const generateUrlId = createUniqueNumberFromRange(urlPicture.MIN, urlPicture.MAX);
 const getRandomElementArray = function (array) {
-  let element = array[getRandomInteger(0, array.length - 1)];
+  const element = array[getRandomInteger(0, array.length - 1)];
   return element;
 };
 const generateCommentId = createUniqueNumberFromRange(commentId.MIN, commentId.MAX);
