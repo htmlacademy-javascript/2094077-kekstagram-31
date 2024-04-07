@@ -4,7 +4,7 @@ const scale = document.querySelector('.scale__control--value');
 const photo = document.querySelector('.img-upload__preview img');
 
 const onScaleChange = (evt) => {
-  let currentValue = parseInt(scale.value);
+  let currentValue = parseInt(scale.value, 10);
   if (evt.target.classList.contains('scale__control--smaller') && currentValue > ScalingSettings.MIN) {
     currentValue = currentValue - ScalingSettings.STEP;
     scale.value = `${currentValue}%`;

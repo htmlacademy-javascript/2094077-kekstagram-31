@@ -7,7 +7,9 @@ import {showDataError} from './alerts.js';
 getData()
   .then((images) => {
     addPhotos(images);
-    photoList.addEventListener('click', (evt) => {onOpenPopup(evt, images)});
+    photoList.addEventListener('click', (evt) => {
+      onOpenPopup(evt, images)
+    });
     initValidation();
   })
   .catch(

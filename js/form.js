@@ -37,7 +37,7 @@ const onEscapeEvent = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     onHideUploadForm();
-  };
+  }
 };
 
 const onOpenUploadForm = () => {
@@ -60,7 +60,7 @@ function onHideUploadForm () {
   zoomOutPhoto.removeEventListener('click', onScaleChange);
   zoomPhoto.removeEventListener('click', onScaleChange);
   effectsRadio.removeEventListener('change', onSelectEffect);
-};
+}
 
 const onSubmitForm = (evt) => {
   evt.preventDefault();
@@ -77,10 +77,10 @@ const onSubmitForm = (evt) => {
       .catch((err) => {
         showErrorAlert(err.message);
       });
-  };
+  }
 };
 
-const validateHashtag = hashtag => REGEX.test(hashtag);
+const validateHashtag = (hashtag) => REGEX.test(hashtag);
 
 const conversionHashtagsString = (string) => {
   const newString = string.trim();
@@ -130,7 +130,7 @@ const initValidation = () => {
   hashtagInput.addEventListener('keydown', (evt) => {
     if (isEscapeKey(evt)) {
       evt.stopPropagation();
-    };
+    }
   });
   uploadImage.addEventListener('change', onOpenUploadForm);
   pristine.addValidator(hashtagInput, isEveryHashtagValid, 'Неверная структура хэштега. Хэштег начинается с символа #. строка после решётки должна состоять из букв и чисел и не может содержать пробелы, спецсимволы (#, @, $ и т. п.), символы пунктуации (тире, дефис, запятая и т. п.), эмодзи и т. д. Максимальная длина одного хэштега 20 символов, включая решётку.');
