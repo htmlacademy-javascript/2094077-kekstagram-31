@@ -19,7 +19,7 @@ const fillComments = (photoComments) => {
   });
 };
 
-const showCommentCount = function () {
+const showCommentCount = () => {
   const hiddenCommentItems = document.querySelectorAll('.social__comment.hidden').length;
   bigPicturePopup.querySelector('.social__comment-shown-count').textContent = comments.querySelectorAll('.social__comment').length - hiddenCommentItems;
 };
@@ -38,7 +38,7 @@ const fillPopup = ({url, description, likes, comments}) => {
   showCommentCount();
 };
 
-const loadComments = function (evt) {
+const onLoadComments = (evt) => {
   evt.preventDefault();
   let hiddenComments = document.querySelectorAll('.social__comment.hidden');
   let hiddenCounter = hiddenComments.length;
@@ -54,25 +54,24 @@ const loadComments = function (evt) {
   showCommentCount();
 };
 
-const closePopup = (evt) => {
-  evt.preventDefault();
+const onClosePopup = () => {
   bigPicturePopup.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   commentCount.classList.remove('hidden');
   commentLoader.classList.remove('hidden');
   document.removeEventListener('keydown', onPopupEscKeydown);
-  buttonClosePopup.removeEventListener('click', closePopup);
-  commentLoader.removeEventListener('click', loadComments);
+  buttonClosePopup.removeEventListener('click', onClosePopup);
+  commentLoader.removeEventListener('click', onLoadComments);
 };
 
 const onPopupEscKeydown = (evt) => {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closePopup();
+    onClosePopup();
   };
 };
 
-const openPopup = function (evt, arrayData) {
+const onOpenPopup = (evt, arrayData) => {
   if (evt.target.matches('.picture__img')) {
     evt.preventDefault();
     let object = arrayData.find((item) => item.id == evt.target.parentNode.dataset.id);
@@ -80,10 +79,10 @@ const openPopup = function (evt, arrayData) {
     fillPopup(object);
     bigPicturePopup.classList.remove('hidden');
     document.querySelector('body').classList.add('modal-open');
-    buttonClosePopup.addEventListener('click', closePopup);
+    buttonClosePopup.addEventListener('click', onClosePopup);
     document.addEventListener('keydown', onPopupEscKeydown);
-    commentLoader.addEventListener('click', loadComments);
+    commentLoader.addEventListener('click', onLoadComments);
   };
 };
 
-export {openPopup};
+export {onOpenPopup};
