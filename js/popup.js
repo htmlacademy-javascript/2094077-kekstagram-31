@@ -2,27 +2,27 @@ import {isEscapeKey} from './util.js';
 
 const bigPicturePopup = document.querySelector('.big-picture');
 const buttonClosePopup = document.querySelector('.big-picture__cancel');
-const comments = bigPicturePopup.querySelector('.social__comments');
+const commentList = bigPicturePopup.querySelector('.social__comments');
 const comment = bigPicturePopup.querySelector('.social__comment');
 const commentCount = document.querySelector('.social__comment-count');
 const commentLoader = document.querySelector('.comments-loader');
 const сommentsShownCounter = bigPicturePopup.querySelector('.social__comment-shown-count');
 
 const fillComments = (photoComments) => {
-  comments.innerHTML = '';
+  commentList.innerHTML = '';
   photoComments.comments.forEach(({avatar, name, message}) => {
     const newComment = comment.cloneNode(true);
     const picture = newComment.querySelector('.social__picture');
     picture.src = avatar;
     picture.alt = name;
     newComment.querySelector('.social__text').textContent = message;
-    comments.append(newComment);
+    commentList.append(newComment);
   });
 };
 
 const showCommentCount = () => {
   const hiddenCommentItems = document.querySelectorAll('.social__comment.hidden').length;
-  сommentsShownCounter.textContent = comments.querySelectorAll('.social__comment').length - hiddenCommentItems;
+  сommentsShownCounter.textContent = commentList.querySelectorAll('.social__comment').length - hiddenCommentItems;
 };
 
 const fillPopup = ({url, description, likes, comments}) => {
@@ -68,7 +68,7 @@ const onClosePopup = () => {
   commentLoader.removeEventListener('click', onLoadComments);
 };
 
-const onPopupEscKeydown = (evt) => {
+function onPopupEscKeydown (evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     onClosePopup();
