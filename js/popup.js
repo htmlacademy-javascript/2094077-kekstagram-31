@@ -78,7 +78,7 @@ function onPopupEscKeydown (evt) {
 const onOpenPopup = (evt, arrayData) => {
   if (evt.target.matches('.picture__img')) {
     evt.preventDefault();
-    let object = arrayData.find((item) => item.id == evt.target.parentNode.dataset.id);
+    const object = arrayData.find((item) => item.id == evt.target.parentNode.dataset.id);
     fillComments(object);
     fillPopup(object);
     bigPicturePopup.classList.remove('hidden');
@@ -86,7 +86,7 @@ const onOpenPopup = (evt, arrayData) => {
     buttonClosePopup.addEventListener('click', onClosePopup);
     document.addEventListener('keydown', onPopupEscKeydown);
     commentLoader.addEventListener('click', onLoadComments);
-  };
+  }
 };
 
 export {onOpenPopup};
