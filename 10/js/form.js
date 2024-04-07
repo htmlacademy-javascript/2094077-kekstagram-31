@@ -116,7 +116,7 @@ const isHashtagsArrayLengthValid = (hashtagsString) => {
   return hashtags.length <= MAX_HASHTAGS;
 };
 
-const isCommentValid = comment => comment.length <= MAX_COMMENT_LENGTH;
+const isCommentValid = (comment) => comment.length <= MAX_COMMENT_LENGTH;
 
 const initValidation = () => {
   sliderContainer.classList.add('hidden');

@@ -13,7 +13,7 @@ const onScaleChange = (evt) => {
     currentValue = currentValue + ScalingSettings.STEP;
     scale.value = `${currentValue}%`;
     photo.style.transform = `scale(${0.01 * currentValue})`;
-  };
+  }
 };
 
 export {onScaleChange};
