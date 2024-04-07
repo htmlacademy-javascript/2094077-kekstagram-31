@@ -24,8 +24,9 @@ const pristine = new Pristine(uploadForm, {
 
 //нужно ключи в верхний регистр и первую букву переменной?
 const toggleSubmitButtonSettings = {
-block: {isDisabled: false, buttonText: 'Опубликовать'},
-unblock: {isDisabled: true, buttonText: 'Отправляю данные на сервер...'}};
+  block: {isDisabled: false, buttonText: 'Опубликовать'},
+  unblock: {isDisabled: true, buttonText: 'Отправляю данные на сервер...'}
+};
 
 const toggleSubmitButton = (isBlock) => {
   submitButton.disabled = isBlock.isDisabled;
@@ -48,7 +49,7 @@ const onOpenUploadForm = () => {
   effectsRadio.addEventListener('change', onSelectEffect);
 };
 
-const onHideUploadForm = () => {
+function onHideUploadForm () {
   pristine.reset();
   uploadForm.reset();
   overlay.classList.add('hidden');
@@ -75,15 +76,11 @@ const onSubmitForm = (evt) => {
       })
       .catch((err) => {
         showErrorAlert(err.message);
-      })
+      });
   };
 };
 
-// throw new Error('Network request failed.')
-
-const validateHashtag = (hashtag) => {
-  return REGEX.test(hashtag);
-};
+const validateHashtag = hashtag => REGEX.test(hashtag);
 
 const conversionHashtagsString = (string) => {
   const newString = string.trim();
@@ -95,7 +92,7 @@ const isEveryHashtagValid = (hashtagsString) => {
   const hashtags = conversionHashtagsString(hashtagsString);
   if (!hashtags[0]) {
     return true;
-  };
+  }
   const validHashtags = hashtags.every((hashtag) => validateHashtag(hashtag));
   return validHashtags;
 };
@@ -119,11 +116,10 @@ const isHashtagsArrayLengthValid = (hashtagsString) => {
   return hashtags.length <= MAX_HASHTAGS;
 };
 
-const isCommentValid = (comment) => {
-  return comment.length <= MAX_COMMENT_LENGTH;
-};
+const isCommentValid = comment => comment.length <= MAX_COMMENT_LENGTH;
 
 const initValidation = () => {
+  sliderContainer.classList.add('hidden');
   uploadForm.addEventListener('submit', onSubmitForm);
   overlayCloseButton.addEventListener('click', onHideUploadForm);
   imageDescriptionInput.addEventListener('keydown', (evt) => {

@@ -6,6 +6,7 @@ const comments = bigPicturePopup.querySelector('.social__comments');
 const comment = bigPicturePopup.querySelector('.social__comment');
 const commentCount = document.querySelector('.social__comment-count');
 const commentLoader = document.querySelector('.comments-loader');
+const сommentsShownCounter = bigPicturePopup.querySelector('.social__comment-shown-count');
 
 const fillComments = (photoComments) => {
   comments.innerHTML = '';
@@ -21,7 +22,7 @@ const fillComments = (photoComments) => {
 
 const showCommentCount = () => {
   const hiddenCommentItems = document.querySelectorAll('.social__comment.hidden').length;
-  bigPicturePopup.querySelector('.social__comment-shown-count').textContent = comments.querySelectorAll('.social__comment').length - hiddenCommentItems;
+  сommentsShownCounter.textContent = comments.querySelectorAll('.social__comment').length - hiddenCommentItems;
 };
 
 const fillPopup = ({url, description, likes, comments}) => {
@@ -36,6 +37,9 @@ const fillPopup = ({url, description, likes, comments}) => {
     commentItems[i].classList.add('hidden');
   };
   showCommentCount();
+  if (сommentsShownCounter.textContent < 5) {
+    commentLoader.classList.add('hidden');
+  };
 };
 
 const onLoadComments = (evt) => {
