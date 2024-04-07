@@ -35,16 +35,16 @@ const fillPopup = ({url, description, likes, comments}) => {
   const commentItems = bigPicturePopup.querySelectorAll('.social__comment');
   for (let i = commentItems.length - 1; i > 4; i--) {
     commentItems[i].classList.add('hidden');
-  };
+  }
   showCommentCount();
   if (сommentsShownCounter.textContent < 5) {
     commentLoader.classList.add('hidden');
-  };
+  }
 };
 
 const onLoadComments = (evt) => {
   evt.preventDefault();
-  let hiddenComments = document.querySelectorAll('.social__comment.hidden');
+  const hiddenComments = document.querySelectorAll('.social__comment.hidden');
   let hiddenCounter = hiddenComments.length;
   for (let i = 0; i < 5; i++) {
     if (hiddenCounter === 0) {
@@ -53,8 +53,8 @@ const onLoadComments = (evt) => {
     } else {
       hiddenCounter--;
       hiddenComments[i].classList.remove('hidden');
-    };
-  };
+    }
+  }
   showCommentCount();
 };
 
@@ -72,8 +72,8 @@ function onPopupEscKeydown (evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
     onClosePopup();
-  };
-};
+  }
+}
 
 const onOpenPopup = (evt, arrayData) => {
   if (evt.target.matches('.picture__img')) {
