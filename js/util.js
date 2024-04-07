@@ -18,7 +18,7 @@ const createUniqueNumberFromRange = function (min, max) {
     }
     previousValues.push(currentValue);
     return currentValue;
-  }
+  };
 };
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
