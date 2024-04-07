@@ -51,7 +51,7 @@ const addEffects = ({filter, min, max, start, step, unit}) => {
 
   slider.noUiSlider.on('update', () => {
     valueEffect.value = slider.noUiSlider.get();
-    uploadedImage.style.filter =`${filter}(${valueEffect.value}${unit})`;
+    uploadedImage.style.filter = `${filter}(${valueEffect.value}${unit})`;
   });
 };
 
@@ -63,7 +63,7 @@ const onSelectEffect = function (evt) {
     uploadedImage.removeAttribute('style');
   } else {
     addEffects(effectsSettings[radioValue]);
-  };
+  }
 };
 
 export {onSelectEffect, sliderContainer, uploadedImage};
