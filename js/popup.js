@@ -78,7 +78,7 @@ function onPopupEscKeydown (evt) {
 const onOpenPopup = (evt, arrayData) => {
   if (evt.target.matches('.picture__img')) {
     evt.preventDefault();
-    const object = arrayData.find((item) => item.id == evt.target.parentNode.dataset.id);
+    const object = arrayData.find((item) => item.id === parseInt(evt.target.parentNode.dataset.id, 10));
     fillComments(object);
     fillPopup(object);
     bigPicturePopup.classList.remove('hidden');
