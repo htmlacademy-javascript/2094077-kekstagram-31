@@ -4,9 +4,9 @@ import {onScaleChange} from './photo-scaling.js';
 import {onSelectEffect, sliderContainer, uploadedImage} from './slider.js';
 import {sendData} from './api.js';
 import {showSuccessAlert, showErrorAlert} from './alerts.js';
+import {onUploadFile, uploadedImageInput} from './upload-photo.js';
 
 const uploadForm = document.querySelector('.img-upload__form');
-const uploadImage = document.querySelector('.img-upload__input');
 const overlay = document.querySelector('.img-upload__overlay');
 const overlayCloseButton = document.querySelector('.img-upload__cancel');
 const hashtagInput = document.querySelector('.text__hashtags');
@@ -47,6 +47,7 @@ const onOpenUploadForm = () => {
   zoomOutPhoto.addEventListener('click', onScaleChange);
   zoomPhoto.addEventListener('click', onScaleChange);
   effectsRadio.addEventListener('change', onSelectEffect);
+  uploadedImageInput.addEventListener('change', onUploadFile);
 };
 
 function onHideUploadForm () {
@@ -121,6 +122,7 @@ const isCommentValid = (comment) => comment.length <= MAX_COMMENT_LENGTH;
 const initValidation = () => {
   sliderContainer.classList.add('hidden');
   uploadForm.addEventListener('submit', onSubmitForm);
+  uploadedImageInput.addEventListener('change', onUploadFile);
   overlayCloseButton.addEventListener('click', onHideUploadForm);
   imageDescriptionInput.addEventListener('keydown', (evt) => {
     if (isEscapeKey(evt)) {
@@ -132,7 +134,7 @@ const initValidation = () => {
       evt.stopPropagation();
     }
   });
-  uploadImage.addEventListener('change', onOpenUploadForm);
+  uploadedImageInput.addEventListener('change', onOpenUploadForm);
   pristine.addValidator(hashtagInput, isEveryHashtagValid, 'Неверная структура хэштега. Хэштег начинается с символа #. строка после решётки должна состоять из букв и чисел и не может содержать пробелы, спецсимволы (#, @, $ и т. п.), символы пунктуации (тире, дефис, запятая и т. п.), эмодзи и т. д. Максимальная длина одного хэштега 20 символов, включая решётку.');
   pristine.addValidator(hashtagInput, isHashtagsUnique, 'Каждый хэштег дожен быть уникальным.');
   pristine.addValidator(hashtagInput, isHashtagsArrayLengthValid, 'Превышен лимит указанных хэштегов. Можно указать не более 5 хэштегов.');
