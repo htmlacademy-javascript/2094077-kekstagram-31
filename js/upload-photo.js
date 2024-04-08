@@ -3,7 +3,7 @@ import {uploadedImage} from './slider.js';
 const FILE_TYPES = ['jpg', 'jpeg', 'png'];
 
 const uploadedImageInput = document.querySelector('.img-upload__input');
-const previewImage = document.querySelectorAll('.effects__preview');
+const previewImages = document.querySelectorAll('.effects__preview');
 
 
  const onUploadFile = () => {
@@ -13,7 +13,7 @@ const previewImage = document.querySelectorAll('.effects__preview');
   console.log(file);
   if (matches) {
     uploadedImage.src = URL.createObjectURL(file);
-    previewImage.forEach((image) => {
+    previewImages.forEach((image) => {
       image.style.backgroundImage = `url(${uploadedImage.src})`;
     });
   }
