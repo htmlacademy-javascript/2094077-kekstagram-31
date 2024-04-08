@@ -10,10 +10,12 @@ const ALERT_SHOW_TIME = 5000;
 
 const BASE_URL = 'https://31.javascript.htmlacademy.pro/kekstagram';
 
+const DEBOUNCE_DELAY = 500;
+
 const ScalingSettings = {
   MIN: 25,
   MAX: 100,
   STEP: 25
 };
 
-export {NUMBERS_OF_OBJECTS, MAX_HASHTAGS, REGEX, MAX_COMMENT_LENGTH, ALERT_SHOW_TIME, BASE_URL, ScalingSettings};
+export {NUMBERS_OF_OBJECTS, MAX_HASHTAGS, REGEX, MAX_COMMENT_LENGTH, ALERT_SHOW_TIME, BASE_URL, DEBOUNCE_DELAY, ScalingSettings};
