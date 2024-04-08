@@ -3,15 +3,14 @@ const uploadedImage = document.querySelector('.img-upload__preview img');
 const valueEffect = document.querySelector('.effect-level__value');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 
-const effects = {
-  chrome: {filter: 'grayscale', min: 0, max: 1, start: 1, step: 0.1},
-  sepia: {filter: 'sepia', min: 0, max: 1, start: 1, step: 0.1},
-  marvin: {filter: 'invert', min: 0, max: 100, start: 100, step: 1},
-  phobos: {filter: 'blur', min: 0, max: 3, start: 3, step: 0.1},
-  heat: {filter: 'brightness', min: 1, max: 3, start: 3, step: 0.1}
+//нужно ключи в верхний регистр и первую букву переменной?
+const effectsSettings = {
+  chrome: {filter: 'grayscale', min: 0, max: 1, start: 1, step: 0.1, unit: ''},
+  sepia: {filter: 'sepia', min: 0, max: 1, start: 1, step: 0.1, unit: ''},
+  marvin: {filter: 'invert', min: 0, max: 100, start: 100, step: 1, unit: '%'},
+  phobos: {filter: 'blur', min: 0, max: 3, start: 3, step: 0.1, unit: 'px'},
+  heat: {filter: 'brightness', min: 1, max: 3, start: 3, step: 0.1, unit: ''}
 };
-
-sliderContainer.classList.add('hidden');
 
 noUiSlider.create(slider, {
   range: {
@@ -25,40 +24,34 @@ noUiSlider.create(slider, {
     to:
     function (value) {
       if (Number.isInteger(value)) {
-        return value.toFixed(0)
+        return value.toFixed(0);
       } else {
-        return value.toFixed(1)
+        return value.toFixed(1);
       }
     },
     from:
     function (value) {
-      return parseFloat(value)
+      return parseFloat(value);
     }
   }
 });
 
-const addEffects = ({filter, min, max, start, step}) => {
+const addEffects = ({filter, min, max, start, step, unit}) => {
   sliderContainer.classList.remove('hidden');
   uploadedImage.removeAttribute('style');
 
   slider.noUiSlider.updateOptions({
-  range: {
-    min: min,
-    max: max,
-  },
-  start: start,
-  step: step,
+    range: {
+      min: min,
+      max: max,
+    },
+    start: start,
+    step: step,
   });
 
   slider.noUiSlider.on('update', () => {
     valueEffect.value = slider.noUiSlider.get();
-    if (filter === 'invert') {
-      uploadedImage.style.filter =`${filter}(${valueEffect.value}%)`;
-    } else if (filter === 'blur') {
-      uploadedImage.style.filter =`${filter}(${valueEffect.value}px)`;
-    } else {
-      uploadedImage.style.filter =`${filter}(${valueEffect.value})`;
-    };
+    uploadedImage.style.filter = `${filter}(${valueEffect.value}${unit})`;
   });
 };
 
@@ -69,8 +62,8 @@ const onSelectEffect = function (evt) {
     sliderContainer.classList.add('hidden');
     uploadedImage.removeAttribute('style');
   } else {
-    addEffects(effects[radioValue]);
-  };
+    addEffects(effectsSettings[radioValue]);
+  }
 };
 
-export {onSelectEffect};
+export {onSelectEffect, sliderContainer, uploadedImage};

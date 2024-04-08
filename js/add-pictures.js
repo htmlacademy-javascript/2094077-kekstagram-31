@@ -13,6 +13,9 @@ const createElement = ({id, url, description, likes, comments}) => {
 };
 
 const addPhotos = (arrayPhotos) => {
+  document.querySelectorAll('.picture').forEach((miniature) => {
+    miniature.remove();
+  });
   arrayPhotos.forEach((photoDescription) => {
     const element = createElement(photoDescription);
     photoFragment.appendChild(element);
