@@ -6,7 +6,7 @@ const uploadedImageInput = document.querySelector('.img-upload__input');
 const previewImages = document.querySelectorAll('.effects__preview');
 
 
-const onUploadFile = () => {
+const onFileUpload = () => {
   const file = uploadedImageInput.files[0];
   const fileName = file.name.toLowerCase();
   const matches = FILE_TYPES.some((it) => fileName.endsWith(it));
@@ -18,4 +18,4 @@ const onUploadFile = () => {
   }
 };
 
-export {onUploadFile, uploadedImageInput};
+export {onFileUpload, uploadedImageInput};

@@ -42,7 +42,7 @@ const fillPopup = ({url, description, likes, comments}) => {
   }
 };
 
-const onLoadComments = (evt) => {
+const onCommentsLoad = (evt) => {
   evt.preventDefault();
   const hiddenComments = document.querySelectorAll('.social__comment.hidden');
   let hiddenCounter = hiddenComments.length;
@@ -58,24 +58,24 @@ const onLoadComments = (evt) => {
   showCommentCount();
 };
 
-const onClosePopup = () => {
+const onPopupClose = () => {
   bigPicturePopup.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   commentCount.classList.remove('hidden');
   commentLoader.classList.remove('hidden');
   document.removeEventListener('keydown', onPopupEscKeydown);
-  buttonClosePopup.removeEventListener('click', onClosePopup);
-  commentLoader.removeEventListener('click', onLoadComments);
+  buttonClosePopup.removeEventListener('click', onPopupClose);
+  commentLoader.removeEventListener('click', onCommentsLoad);
 };
 
 function onPopupEscKeydown (evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    onClosePopup();
+    onPopupClose();
   }
 }
 
-const onOpenPopup = (evt, arrayData) => {
+const onPopupOpen = (evt, arrayData) => {
   if (evt.target.matches('.picture__img')) {
     evt.preventDefault();
     const object = arrayData.find((item) => item.id === parseInt(evt.target.parentNode.dataset.id, 10));
@@ -83,10 +83,10 @@ const onOpenPopup = (evt, arrayData) => {
     fillPopup(object);
     bigPicturePopup.classList.remove('hidden');
     document.querySelector('body').classList.add('modal-open');
-    buttonClosePopup.addEventListener('click', onClosePopup);
+    buttonClosePopup.addEventListener('click', onPopupClose);
     document.addEventListener('keydown', onPopupEscKeydown);
-    commentLoader.addEventListener('click', onLoadComments);
+    commentLoader.addEventListener('click', onCommentsLoad);
   }
 };
 
-export {onOpenPopup};
+export {onPopupOpen};

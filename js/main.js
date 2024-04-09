@@ -1,5 +1,5 @@
 import {addPhotos, photoList} from './add-pictures.js';
-import {onOpenPopup} from './popup.js';
+import {onPopupOpen} from './popup.js';
 import {initValidation} from './form.js';
 import {getData} from './api.js';
 import {showDataError} from './alerts.js';
@@ -24,7 +24,7 @@ getData()
     ));
     document.querySelector('.img-filters').classList.remove('img-filters--inactive');
     photoList.addEventListener('click', (evt) => {
-      onOpenPopup(evt, images);
+      onPopupOpen(evt, images);
     });
     initValidation();
   })
