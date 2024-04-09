@@ -22,7 +22,6 @@ const pristine = new Pristine(uploadForm, {
   errorTextClass: 'img-upload__field-wrapper--error',
 });
 
-//нужно ключи в верхний регистр и первую букву переменной?
 const toggleSubmitButtonSettings = {
   block: {isDisabled: false, buttonText: 'Опубликовать'},
   unblock: {isDisabled: true, buttonText: 'Отправляю данные на сервер...'}
