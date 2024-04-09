@@ -3,7 +3,6 @@ const uploadedImage = document.querySelector('.img-upload__preview img');
 const valueEffect = document.querySelector('.effect-level__value');
 const sliderContainer = document.querySelector('.img-upload__effect-level');
 
-//нужно ключи в верхний регистр и первую букву переменной?
 const effectsSettings = {
   chrome: {filter: 'grayscale', min: 0, max: 1, start: 1, step: 0.1, unit: ''},
   sepia: {filter: 'sepia', min: 0, max: 1, start: 1, step: 0.1, unit: ''},
