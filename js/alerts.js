@@ -7,15 +7,15 @@ const showSuccessAlert = () => {
   document.body.append(successElement);
   const successMessage = document.querySelector('.success');
   const successInner = document.querySelector('.success__inner');
-  document.querySelector('.success__button').addEventListener('click', removeMessageHandler);
-  document.addEventListener('keydown', closeEventsHandler);
-  document.addEventListener('click', closeEventsHandler);
-  function removeMessageHandler () {
+  document.querySelector('.success__button').addEventListener('click', onMessageRemove);
+  document.addEventListener('keydown', onEventsClose);
+  document.addEventListener('click', onEventsClose);
+  function onMessageRemove () {
     successMessage.remove();
   }
-  function closeEventsHandler (evt) {
+  function onEventsClose (evt) {
     if (isEscapeKey(evt) || !successInner.contains(evt.target)) {
-      removeMessageHandler();
+      onMessageRemove();
     }
   }
 };
@@ -26,15 +26,15 @@ const showErrorAlert = () => {
   document.body.append(errorElement);
   const errorMessage = document.querySelector('.error');
   const errorInner = document.querySelector('.error__inner');
-  document.querySelector('.error__button').addEventListener('click', removeMessageHandler);
-  document.addEventListener('keydown', closeEventsHandler);
-  document.addEventListener('click', closeEventsHandler);
-  function removeMessageHandler () {
+  document.querySelector('.error__button').addEventListener('click', onMessageRemove);
+  document.addEventListener('keydown', onEventsClose);
+  document.addEventListener('click', onEventsClose);
+  function onMessageRemove () {
     errorMessage.remove();
   }
-  function closeEventsHandler (evt) {
+  function onEventsClose (evt) {
     if (isEscapeKey(evt) || !errorInner.contains(evt.target)) {
-      removeMessageHandler();
+      onMessageRemove();
     }
   }
 };

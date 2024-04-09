@@ -54,7 +54,7 @@ const addEffects = ({filter, min, max, start, step, unit}) => {
   });
 };
 
-const onSelectEffect = function (evt) {
+const onEffectSelect = function (evt) {
   const radioValue = evt.target.closest('.effects__radio').value;
 
   if (radioValue === 'none') {
@@ -65,4 +65,4 @@ const onSelectEffect = function (evt) {
   }
 };
 
-export {onSelectEffect, sliderContainer, uploadedImage};
+export {onEffectSelect, sliderContainer, uploadedImage};
