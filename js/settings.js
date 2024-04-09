@@ -4,7 +4,7 @@ const MAX_HASHTAGS = 5;
 
 const REGEX = /^#[a-zа-яё0-9]{1,19}$/i;
 
-const MAX_COMMENT_LENGTH = 141;
+const MAX_COMMENT_LENGTH = 140;
 
 const ALERT_SHOW_TIME = 5000;
 
