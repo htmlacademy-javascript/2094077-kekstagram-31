@@ -1,4 +1,5 @@
 import {addPhotos} from './add-pictures.js';
+import {NUMBER_OF_RANDOM_PHOTO} from './settings.js';
 
 const defaultFilter = document.querySelector('#filter-default');
 const randomFilter = document.querySelector('#filter-random');
@@ -9,7 +10,7 @@ const useDefaultFilter = (images) => {
 };
 
 const useRandomFilter = (images) => {
-  const randomImages = images.slice().sort(() => 0.5 - Math.random()).slice(0, 10);
+  const randomImages = images.slice().sort(() => 0.5 - Math.random()).slice(0, NUMBER_OF_RANDOM_PHOTO);
   addPhotos(randomImages);
 };
 
