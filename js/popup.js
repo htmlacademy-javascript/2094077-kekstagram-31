@@ -90,4 +90,4 @@ const onPopupOpen = (evt, arrayData) => {
   }
 };
 
-export {onPopupOpen};
+export {onPopupOpen, body};
