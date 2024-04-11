@@ -26,7 +26,6 @@ getData()
     photoList.addEventListener('click', (evt) => {
       onPopupOpen(evt, images);
     });
-    initValidation();
   })
   .catch(
     (err) => {
@@ -34,3 +33,4 @@ getData()
     }
   );
 
+initValidation();
